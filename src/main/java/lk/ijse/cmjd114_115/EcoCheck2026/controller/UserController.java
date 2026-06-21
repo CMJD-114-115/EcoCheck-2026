@@ -22,27 +22,25 @@ public class UserController {
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> createUser(@RequestBody UserDTO userDTO) {
-        var userServiceIMPL = new UserServiceIMPL();
-        userServiceIMPL.saveUser(userDTO);
+        userService.saveUser(userDTO);
         return new  ResponseEntity<>(HttpStatus.CREATED);
     }
     @GetMapping(value= "{userId}",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<UserDTO> getSelectedUser(@PathVariable String userId) {
-        var userServiceIMPL = new UserServiceIMPL();
-        return new  ResponseEntity<>(userServiceIMPL.getSelectedUser(userId), HttpStatus.OK);
+        return new  ResponseEntity<>(userService.getSelectedUser(userId), HttpStatus.OK);
     }
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<UserDTO>> getUsers() {
-                return new ResponseEntity<>(new UserServiceIMPL().getAllUsers(), HttpStatus.OK);
+                return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
     }
     @PatchMapping(value = "{userId}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> updateUser(@PathVariable String userId,@RequestBody UserDTO userDTO) {
-        new UserServiceIMPL().updateUser(userId,userDTO);
+        userService.updateUser(userId,userDTO);
         return new  ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
     @DeleteMapping(value = "{userId}")
     public ResponseEntity<Void> deleteUser(@PathVariable String userId) {
-        new UserServiceIMPL().deleteUser(userId);
+       userService.deleteUser(userId);
         return new  ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
