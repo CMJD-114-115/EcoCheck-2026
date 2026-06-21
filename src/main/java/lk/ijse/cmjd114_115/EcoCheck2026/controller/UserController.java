@@ -15,13 +15,10 @@ import java.util.List;
 
 @RequestMapping("api/v1/users")
 @RestController
-
+@RequiredArgsConstructor
 public class UserController {
-    private final UserService userService;
     //constructor injection
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
+    private final UserService userService;
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> createUser(@RequestBody UserDTO userDTO) {
