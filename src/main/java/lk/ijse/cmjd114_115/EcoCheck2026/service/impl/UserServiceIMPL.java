@@ -3,9 +3,11 @@ package lk.ijse.cmjd114_115.EcoCheck2026.service.impl;
 import lk.ijse.cmjd114_115.EcoCheck2026.dto.UserDTO;
 import lk.ijse.cmjd114_115.EcoCheck2026.dto.enums.Role;
 import lk.ijse.cmjd114_115.EcoCheck2026.service.UserService;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class UserServiceIMPL implements UserService {
 
     @Override
