@@ -69,6 +69,11 @@ public class UserController {
         System.out.println("To be updated the user id " + userId +" as: " + userDTO.toString());
         return new  ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+    @DeleteMapping(value = "{userId}")
+    public ResponseEntity<Void> deleteteUser(@PathVariable String userId) {
+        System.out.println("Deleted User id is " + userId);
+        return new  ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 
 
 
