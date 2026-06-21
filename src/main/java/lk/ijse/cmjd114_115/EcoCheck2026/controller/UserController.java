@@ -22,55 +22,21 @@ public class UserController {
     @GetMapping(value= "{userId}",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<UserDTO> getSelectedUser(@PathVariable String userId) {
         System.out.println("Selected User: " + userId);
-        return new  ResponseEntity<>(new UserDTO("U001","Kamal","Silva","kamal@mail.com","pw1111", Role.ADMIN), HttpStatus.OK);
+        UserServiceIMPL userServiceIMPL = new UserServiceIMPL();
+        return new  ResponseEntity<>(userServiceIMPL.getSelectedUser(userId), HttpStatus.OK);
     }
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<UserDTO>> getUsers() {
-        List<UserDTO> userList = List.of(
-                new UserDTO(
-                        "U001",
-                        "Kamal",
-                        "Silva",
-                        "kamal@mail.com",
-                        "pw1111",
-                        Role.ADMIN
-                ),
-                new UserDTO(
-                        "U002",
-                        "Nimal",
-                        "Perera",
-                        "nimal@mail.com",
-                        "pw2222",
-                        Role.USER
-                ),
-                new UserDTO(
-                        "U003",
-                        "Sahan",
-                        "Silva",
-                        "sahan@mail.com",
-                        "pw1111",
-                        Role.ADMIN
-                ),
-                new UserDTO(
-                        "U004",
-                        "Amali",
-                        "Jayawardena",
-                        "amali@mail.com",
-                        "pw4444",
-                        Role.ADMIN
-                ));
-                return new ResponseEntity<>(userList, HttpStatus.OK);
-
-
+                return new ResponseEntity<>(new UserServiceIMPL().getAllUsers(), HttpStatus.OK);
     }
     @PatchMapping(value = "{userId}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> updateUser(@PathVariable String userId,@RequestBody UserDTO userDTO) {
-        System.out.println("To be updated the user id " + userId +" as: " + userDTO.toString());
+        new UserServiceIMPL().updateUser(userId,userDTO);
         return new  ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
     @DeleteMapping(value = "{userId}")
-    public ResponseEntity<Void> deleteteUser(@PathVariable String userId) {
-        System.out.println("Deleted User id is " + userId);
+    public ResponseEntity<Void> deleteUser(@PathVariable String userId) {
+        new UserServiceIMPL().deleteUser(userId);
         return new  ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
