@@ -9,6 +9,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RequestMapping("api/v1/users")
 @RestController
 public class UserController {
@@ -21,5 +24,44 @@ public class UserController {
     public ResponseEntity<UserDTO> getSelectedUser(@PathVariable String userId) {
         System.out.println("Selected User: " + userId);
         return new  ResponseEntity<>(new UserDTO("U001","Kamal","Silva","kamal@mail.com","pw1111", Role.ADMIN), HttpStatus.OK);
+    }
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<UserDTO>> getUsers() {
+        List<UserDTO> userList = List.of(
+                new UserDTO(
+                        "U001",
+                        "Kamal",
+                        "Silva",
+                        "kamal@mail.com",
+                        "pw1111",
+                        Role.ADMIN
+                ),
+                new UserDTO(
+                        "U002",
+                        "Nimal",
+                        "Perera",
+                        "nimal@mail.com",
+                        "pw2222",
+                        Role.USER
+                ),
+                new UserDTO(
+                        "U003",
+                        "Sahan",
+                        "Silva",
+                        "sahan@mail.com",
+                        "pw1111",
+                        Role.ADMIN
+                ),
+                new UserDTO(
+                        "U004",
+                        "Amali",
+                        "Jayawardena",
+                        "amali@mail.com",
+                        "pw4444",
+                        Role.ADMIN
+                ));
+                return new ResponseEntity<>(userList, HttpStatus.OK);
+
+
     }
 }
