@@ -17,7 +17,7 @@ public class UserController {
         System.out.println("createUser: " + userDTO.toString());
         return new  ResponseEntity<>(HttpStatus.CREATED);
     }
-    @GetMapping(name = "{userId}",produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value= "{userId}",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<UserDTO> getSelectedUser(@PathVariable String userId) {
         System.out.println("Selected User: " + userId);
         return new  ResponseEntity<>(new UserDTO("U001","Kamal","Silva","kamal@mail.com","pw1111", Role.ADMIN), HttpStatus.OK);
