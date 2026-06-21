@@ -9,7 +9,7 @@ public class UserServiceIMPL implements UserService {
 
     @Override
     public void saveUser(UserDTO user) {
-
+        System.out.println("UserServiceIMPL saveUser is "+user);
     }
 
     @Override

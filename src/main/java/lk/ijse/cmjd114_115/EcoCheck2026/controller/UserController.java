@@ -2,14 +2,12 @@ package lk.ijse.cmjd114_115.EcoCheck2026.controller;
 
 import lk.ijse.cmjd114_115.EcoCheck2026.dto.UserDTO;
 import lk.ijse.cmjd114_115.EcoCheck2026.dto.enums.Role;
-import org.apache.catalina.User;
+import lk.ijse.cmjd114_115.EcoCheck2026.service.impl.UserServiceIMPL;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RequestMapping("api/v1/users")
@@ -17,7 +15,8 @@ import java.util.List;
 public class UserController {
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> createUser(@RequestBody UserDTO userDTO) {
-        System.out.println("createUser: " + userDTO.toString());
+        UserServiceIMPL userServiceIMPL = new UserServiceIMPL();
+        userServiceIMPL.saveUser(userDTO);
         return new  ResponseEntity<>(HttpStatus.CREATED);
     }
     @GetMapping(value= "{userId}",produces = MediaType.APPLICATION_JSON_VALUE)
