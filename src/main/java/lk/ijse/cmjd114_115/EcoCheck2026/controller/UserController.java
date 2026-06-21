@@ -64,4 +64,12 @@ public class UserController {
 
 
     }
+    @PatchMapping(value = "{userId}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Void> updateUser(@PathVariable String userId,@RequestBody UserDTO userDTO) {
+        System.out.println("To be updated the user id " + userId +" as: " + userDTO.toString());
+        return new  ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+
+
 }
