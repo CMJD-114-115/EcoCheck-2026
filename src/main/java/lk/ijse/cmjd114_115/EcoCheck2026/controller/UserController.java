@@ -2,7 +2,9 @@ package lk.ijse.cmjd114_115.EcoCheck2026.controller;
 
 import lk.ijse.cmjd114_115.EcoCheck2026.dto.UserDTO;
 import lk.ijse.cmjd114_115.EcoCheck2026.dto.enums.Role;
+import lk.ijse.cmjd114_115.EcoCheck2026.service.UserService;
 import lk.ijse.cmjd114_115.EcoCheck2026.service.impl.UserServiceIMPL;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +15,9 @@ import java.util.List;
 @RequestMapping("api/v1/users")
 @RestController
 public class UserController {
+    @Autowired
+    private UserService userService; // Filed injection
+
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> createUser(@RequestBody UserDTO userDTO) {
         var userServiceIMPL = new UserServiceIMPL();
