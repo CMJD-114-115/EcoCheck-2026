@@ -21,7 +21,6 @@ public class UserActionEntity implements Serializable {
     private int quantity;
     private double totalReduction;
     private LocalDate completedDate;
-    private String userId;
     private String actionId;
 
     @ManyToOne

@@ -19,7 +19,7 @@ import java.util.List;
 @Table(name = "users")
 public class UserEntity implements Serializable {
     @Id
-    private String useId;
+    private String userId;
     @Column(nullable = false)
     private String firstName;
     @Column(nullable = false)
@@ -30,7 +30,7 @@ public class UserEntity implements Serializable {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @OneToMany(mappedBy = "action")
+    @OneToMany(mappedBy = "user")
     @JsonIgnore
     private List<UserActionEntity> userActions;
 
