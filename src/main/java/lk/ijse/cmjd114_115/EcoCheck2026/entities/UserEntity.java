@@ -3,6 +3,7 @@ package lk.ijse.cmjd114_115.EcoCheck2026.entities;
 import jakarta.persistence.*;
 import lk.ijse.cmjd114_115.EcoCheck2026.dto.enums.Role;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +12,8 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Data
 @Entity
+@Builder
+@Table(name = "users")
 public class UserEntity implements Serializable {
     @Id
     private String useId;
