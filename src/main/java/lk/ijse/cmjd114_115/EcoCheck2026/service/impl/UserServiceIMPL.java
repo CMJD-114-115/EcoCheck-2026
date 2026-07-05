@@ -1,18 +1,26 @@
 package lk.ijse.cmjd114_115.EcoCheck2026.service.impl;
 
+import lk.ijse.cmjd114_115.EcoCheck2026.dao.UserDao;
 import lk.ijse.cmjd114_115.EcoCheck2026.dto.UserDTO;
 import lk.ijse.cmjd114_115.EcoCheck2026.dto.enums.Role;
 import lk.ijse.cmjd114_115.EcoCheck2026.service.UserService;
+import lk.ijse.cmjd114_115.EcoCheck2026.util.IDGenerate;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
+@RequiredArgsConstructor
 public class UserServiceIMPL implements UserService {
+    private final UserDao userDao;
 
     @Override
     public void saveUser(UserDTO user) {
-        System.out.println("UserServiceIMPL saveUser is "+user);
+//        Generate User Id
+        user.setUseId(IDGenerate.userId());
+//        Save the data
+
     }
 
     @Override
