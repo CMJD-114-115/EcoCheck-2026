@@ -55,6 +55,8 @@ public class UserServiceIMPL implements UserService {
 
     @Override
     public void deleteUser(String userId) {
-        System.out.println("Deleted user id is " + userId);
+        UserEntity foundUser = userDao.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found!"));
+        userDao.delete(foundUser);
     }
 }
