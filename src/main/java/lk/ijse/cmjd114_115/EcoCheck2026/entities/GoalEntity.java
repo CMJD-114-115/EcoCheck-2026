@@ -1,9 +1,7 @@
 package lk.ijse.cmjd114_115.EcoCheck2026.entities;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lk.ijse.cmjd114_115.EcoCheck2026.dto.enums.GoalStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,6 +23,7 @@ public class GoalEntity implements Serializable {
     private String title;
     private double targetReduction;
     private LocalDate targetDate;
+    @Enumerated(EnumType.STRING)
     private GoalStatus status;
     private String userId;
 }
