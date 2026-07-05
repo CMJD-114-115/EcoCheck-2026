@@ -3,7 +3,9 @@ package lk.ijse.cmjd114_115.EcoCheck2026.service.impl;
 import lk.ijse.cmjd114_115.EcoCheck2026.dao.UserDao;
 import lk.ijse.cmjd114_115.EcoCheck2026.dto.UserDTO;
 import lk.ijse.cmjd114_115.EcoCheck2026.dto.enums.Role;
+import lk.ijse.cmjd114_115.EcoCheck2026.entities.UserEntity;
 import lk.ijse.cmjd114_115.EcoCheck2026.service.UserService;
+import lk.ijse.cmjd114_115.EcoCheck2026.util.Conversion;
 import lk.ijse.cmjd114_115.EcoCheck2026.util.IDGenerate;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -14,15 +16,17 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserServiceIMPL implements UserService {
     private final UserDao userDao;
+    private final Conversion conversion;
 
     @Override
     public void saveUser(UserDTO user) {
-//        Generate User Id
+//        -----Generate User Id
         user.setUseId(IDGenerate.userId());
-//        Save the data
-
+//        -----Save the data
+//        UserEntity userEntity = conversion.toUserEntity(user);
+//        userDao.save(userEntity);
+          userDao.save(conversion.toUserEntity(user));
     }
-
     @Override
     public UserDTO getSelectedUser(String userId) {
         return new UserDTO("U001","Kamal","Silva","kamal@mail.com","pw1111", Role.ADMIN);
