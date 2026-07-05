@@ -1,7 +1,8 @@
 package lk.ijse.cmjd114_115.EcoCheck2026.service.impl;
 
-import com.thanu.home.intro.model.UserActionDTO;
-import com.thanu.home.intro.service.UserActionService;
+
+import lk.ijse.cmjd114_115.EcoCheck2026.dto.UserActionDTO;
+import lk.ijse.cmjd114_115.EcoCheck2026.service.UserActionService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
