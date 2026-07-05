@@ -5,6 +5,7 @@ import lk.ijse.cmjd114_115.EcoCheck2026.dao.UserDao;
 import lk.ijse.cmjd114_115.EcoCheck2026.dto.UserDTO;
 import lk.ijse.cmjd114_115.EcoCheck2026.dto.enums.Role;
 import lk.ijse.cmjd114_115.EcoCheck2026.entities.UserEntity;
+import lk.ijse.cmjd114_115.EcoCheck2026.exceptions.DataNotFoundException;
 import lk.ijse.cmjd114_115.EcoCheck2026.service.UserService;
 import lk.ijse.cmjd114_115.EcoCheck2026.util.Conversion;
 import lk.ijse.cmjd114_115.EcoCheck2026.util.IDGenerate;
@@ -33,7 +34,7 @@ public class UserServiceIMPL implements UserService {
     @Override
     public UserDTO getSelectedUser(String userId) {
         UserEntity userEntity = userDao.findById(userId)
-                .orElseThrow(() -> new RuntimeException("User not found!"));
+                .orElseThrow(() -> new DataNotFoundException("User not found!"));
         return conversion.toUserDTO(userEntity);
     }
 
@@ -45,7 +46,7 @@ public class UserServiceIMPL implements UserService {
     @Override
     public void updateUser(String userId, UserDTO user) {
         UserEntity foundUser = userDao.findById(userId)
-                .orElseThrow(() -> new RuntimeException("User not found!"));
+                .orElseThrow(() -> new DataNotFoundException("User not found!"));
         foundUser.setFirstName(user.getFirstName());
         foundUser.setLastName(user.getLastName());
         foundUser.setEmail(user.getEmail());
@@ -56,7 +57,7 @@ public class UserServiceIMPL implements UserService {
     @Override
     public void deleteUser(String userId) {
         UserEntity foundUser = userDao.findById(userId)
-                .orElseThrow(() -> new RuntimeException("User not found!"));
+                .orElseThrow(() -> new DataNotFoundException("User not found!"));
         userDao.delete(foundUser);
     }
 }
