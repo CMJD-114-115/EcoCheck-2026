@@ -37,40 +37,7 @@ public class UserServiceIMPL implements UserService {
 
     @Override
     public List<UserDTO> getAllUsers() {
-          List<UserDTO> userList = List.of(
-                new UserDTO(
-                        "U001",
-                        "Kamal",
-                        "Silva",
-                        "kamal@mail.com",
-                        "pw1111",
-                        Role.ADMIN
-                ),
-                new UserDTO(
-                        "U002",
-                        "Nimal",
-                        "Perera",
-                        "nimal@mail.com",
-                        "pw2222",
-                        Role.USER
-                ),
-                new UserDTO(
-                        "U003",
-                        "Sahan",
-                        "Silva",
-                        "sahan@mail.com",
-                        "pw1111",
-                        Role.ADMIN
-                ),
-                new UserDTO(
-                        "U004",
-                        "Amali",
-                        "Jayawardena",
-                        "amali@mail.com",
-                        "pw4444",
-                        Role.ADMIN
-                ));
-          return userList;
+        return conversion.toUserDTOList(userDao.findAll());
     }
 
     @Override
