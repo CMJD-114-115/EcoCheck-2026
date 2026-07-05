@@ -1,4 +1,4 @@
-package lk.ijse.cmjd114_115.EcoCheck2026;
+package lk.ijse.cmjd114_115.EcoCheck2026.util;
 
 import java.util.UUID;
 

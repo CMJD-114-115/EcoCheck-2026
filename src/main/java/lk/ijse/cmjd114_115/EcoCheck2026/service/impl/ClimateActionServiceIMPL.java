@@ -1,7 +1,7 @@
 package lk.ijse.cmjd114_115.EcoCheck2026.service.impl;
 
 
-import lk.ijse.cmjd114_115.EcoCheck2026.IDGenerate;
+import lk.ijse.cmjd114_115.EcoCheck2026.util.IDGenerate;
 import lk.ijse.cmjd114_115.EcoCheck2026.dto.ClimateActionDTO;
 import lk.ijse.cmjd114_115.EcoCheck2026.service.ClimateActionService;
 import org.springframework.stereotype.Service;
