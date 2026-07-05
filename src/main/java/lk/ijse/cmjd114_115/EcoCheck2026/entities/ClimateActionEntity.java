@@ -1,14 +1,14 @@
 package lk.ijse.cmjd114_115.EcoCheck2026.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,4 +23,13 @@ public class ClimateActionEntity implements Serializable {
     private String description;
     private double estimatedCO2Reduction;
     private int points;
+
+    @ManyToOne
+    @JoinColumn(name = "action-id")
+    private ActionCategoryEntity actionCategory;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "climateAction")
+    private List<UserActionEntity> userActions;
+
 }

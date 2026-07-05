@@ -1,6 +1,7 @@
 package lk.ijse.cmjd114_115.EcoCheck2026.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lk.ijse.cmjd114_115.EcoCheck2026.dto.enums.GoalStatus;
 import lombok.AllArgsConstructor;
@@ -25,5 +26,9 @@ public class GoalEntity implements Serializable {
     private LocalDate targetDate;
     @Enumerated(EnumType.STRING)
     private GoalStatus status;
-    private String userId;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    @JsonIgnore
+    private UserEntity user;
 }

@@ -1,8 +1,6 @@
 package lk.ijse.cmjd114_115.EcoCheck2026.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,4 +23,12 @@ public class UserActionEntity implements Serializable {
     private LocalDate completedDate;
     private String userId;
     private String actionId;
+
+    @ManyToOne
+    @JoinColumn (name = "climate_action_id")
+    private ClimateActionEntity climateAction;
+
+    @ManyToOne
+    @JoinColumn (name = "user_id")
+    private UserEntity user;
 }
