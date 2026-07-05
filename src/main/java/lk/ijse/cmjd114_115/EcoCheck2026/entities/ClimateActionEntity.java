@@ -1,6 +1,10 @@
 package lk.ijse.cmjd114_115.EcoCheck2026.entities;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -9,7 +13,11 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@Entity
+@Table (name = "climate-actions")
+@Builder
 public class ClimateActionEntity implements Serializable {
+    @Id
     private String climateActionId;
     private String title;
     private String description;
