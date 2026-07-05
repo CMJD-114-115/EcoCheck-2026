@@ -10,7 +10,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Data
 public class UserDTO implements Serializable {
-    private String useId;
+    private String userId;
     private String firstName;
     private String lastName;
     private String email;

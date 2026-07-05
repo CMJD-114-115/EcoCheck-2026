@@ -6,6 +6,7 @@ import lk.ijse.cmjd114_115.EcoCheck2026.service.UserService;
 import lk.ijse.cmjd114_115.EcoCheck2026.service.impl.UserServiceIMPL;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -26,7 +27,7 @@ public class UserController {
         return new  ResponseEntity<>(HttpStatus.CREATED);
     }
     @GetMapping(value= "{userId}",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<UserDTO> getSelectedUser(@PathVariable String userId) {
+    public ResponseEntity<UserDTO> getSelectedUser(@PathVariable String userId) throws ChangeSetPersister.NotFoundException {
         return new  ResponseEntity<>(userService.getSelectedUser(userId), HttpStatus.OK);
     }
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)

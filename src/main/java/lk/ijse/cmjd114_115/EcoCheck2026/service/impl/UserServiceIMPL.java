@@ -8,6 +8,7 @@ import lk.ijse.cmjd114_115.EcoCheck2026.service.UserService;
 import lk.ijse.cmjd114_115.EcoCheck2026.util.Conversion;
 import lk.ijse.cmjd114_115.EcoCheck2026.util.IDGenerate;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +22,7 @@ public class UserServiceIMPL implements UserService {
     @Override
     public void saveUser(UserDTO user) {
 //        -----Generate User Id
-        user.setUseId(IDGenerate.userId());
+        user.setUserId(IDGenerate.userId());
 //        -----Save the data
 //        UserEntity userEntity = conversion.toUserEntity(user);
 //        userDao.save(userEntity);
@@ -29,7 +30,9 @@ public class UserServiceIMPL implements UserService {
     }
     @Override
     public UserDTO getSelectedUser(String userId) {
-        return new UserDTO("U001","Kamal","Silva","kamal@mail.com","pw1111", Role.ADMIN);
+        UserEntity userEntity = userDao.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found!"));
+        return conversion.toUserDTO(userEntity);
     }
 
     @Override
