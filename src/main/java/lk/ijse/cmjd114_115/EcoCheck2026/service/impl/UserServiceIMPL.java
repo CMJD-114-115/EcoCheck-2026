@@ -1,5 +1,6 @@
 package lk.ijse.cmjd114_115.EcoCheck2026.service.impl;
 
+import jakarta.transaction.Transactional;
 import lk.ijse.cmjd114_115.EcoCheck2026.dao.UserDao;
 import lk.ijse.cmjd114_115.EcoCheck2026.dto.UserDTO;
 import lk.ijse.cmjd114_115.EcoCheck2026.dto.enums.Role;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
+@Transactional
 @RequiredArgsConstructor
 public class UserServiceIMPL implements UserService {
     private final UserDao userDao;
@@ -42,7 +44,13 @@ public class UserServiceIMPL implements UserService {
 
     @Override
     public void updateUser(String userId, UserDTO user) {
-        System.out.println("Updated user id is " + userId +" and the user is: " + user.toString());
+        UserEntity foundUser = userDao.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found!"));
+        foundUser.setFirstName(user.getFirstName());
+        foundUser.setLastName(user.getLastName());
+        foundUser.setEmail(user.getEmail());
+        foundUser.setPassword(user.getPassword());
+        foundUser.setRole(user.getRole());
     }
 
     @Override
