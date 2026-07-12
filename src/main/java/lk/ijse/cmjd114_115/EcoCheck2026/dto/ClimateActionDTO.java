@@ -15,4 +15,5 @@ public class ClimateActionDTO implements Serializable {
     private String description;
     private double estimatedCO2Reduction;
     private int points;
+    private String actionCategoryId;
 }
