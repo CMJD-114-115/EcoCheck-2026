@@ -5,6 +5,8 @@ import lk.ijse.cmjd114_115.EcoCheck2026.dto.enums.Role;
 import lk.ijse.cmjd114_115.EcoCheck2026.service.UserService;
 import lk.ijse.cmjd114_115.EcoCheck2026.service.impl.UserServiceIMPL;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.HttpStatus;
@@ -20,9 +22,11 @@ import java.util.List;
 public class UserController {
     //constructor injection
     private final UserService userService;
+    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> createUser(@RequestBody UserDTO userDTO) {
+        logger.info("Incoming create user detail is {}", userDTO);
         userService.saveUser(userDTO);
         return new  ResponseEntity<>(HttpStatus.CREATED);
     }
