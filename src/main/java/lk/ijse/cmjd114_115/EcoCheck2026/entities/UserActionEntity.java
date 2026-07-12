@@ -21,7 +21,7 @@ public class UserActionEntity implements Serializable {
     private int quantity;
     private double totalReduction;
     private LocalDate completedDate;
-    private String actionId;
+//    private String actionId;
 
     @ManyToOne
     @JoinColumn (name = "climate_action_id")

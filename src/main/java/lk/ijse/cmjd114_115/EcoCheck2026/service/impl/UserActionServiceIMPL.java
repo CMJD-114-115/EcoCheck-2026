@@ -32,7 +32,7 @@ public class UserActionServiceIMPL implements UserActionService {
     public void createUserAction(UserActionDTO userAction) {
         userDao.findById(userAction.getUserId())
                         .orElseThrow(()-> new DataNotFoundException("User Not Found"));
-        climateActionDao.findById(userAction.getActionId())
+        climateActionDao.findById(userAction.getClimateActionId())
                         .orElseThrow(()-> new DataNotFoundException("Climate Action Not Found"));
         userAction.setUserActionId(IDGenerate.userActionId());
         userActionDao.save(conversion.toUserActionEntity(userAction));
@@ -55,7 +55,7 @@ public class UserActionServiceIMPL implements UserActionService {
     public void updateUserAction(String userActionId, UserActionDTO userActionDTO) {
         UserEntity foundUserEntity = userDao.findById(userActionDTO.getUserId())
                 .orElseThrow(() -> new DataNotFoundException("User Not Found"));
-        ClimateActionEntity foundClimateActionEntity = climateActionDao.findById(userActionDTO.getActionId())
+        ClimateActionEntity foundClimateActionEntity = climateActionDao.findById(userActionDTO.getClimateActionId())
                 .orElseThrow(() -> new DataNotFoundException("Climate Action Not Found"));
         UserActionEntity foundUserActionEntity = userActionDao.findById(userActionId)
                 .orElseThrow(() -> new DataNotFoundException("User Action Not Found"));

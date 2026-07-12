@@ -17,5 +17,5 @@ public class UserActionDTO implements Serializable {
     private double totalReduction;
     private LocalDate completedDate;
     private String userId;
-    private String actionId;
+    private String climateActionId;
 }
