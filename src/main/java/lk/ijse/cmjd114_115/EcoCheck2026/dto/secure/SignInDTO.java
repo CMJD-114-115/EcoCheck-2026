@@ -11,6 +11,8 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Data
 @Builder
-public class JWTResponse implements Serializable {
-    String token;
+public class SignInDTO implements Serializable {
+    private String email;
+    private String password;
 }
+

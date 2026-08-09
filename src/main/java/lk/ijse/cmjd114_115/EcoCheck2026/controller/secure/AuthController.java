@@ -1,8 +1,8 @@
 package lk.ijse.cmjd114_115.EcoCheck2026.controller.secure;
 
-import lk.ijse.cmjd114_115.EcoCheck2026.dto.secure.JWTResponse;
+import lk.ijse.cmjd114_115.EcoCheck2026.dto.secure.JWTResponseDTO;
 import lk.ijse.cmjd114_115.EcoCheck2026.dto.UserDTO;
-import lk.ijse.cmjd114_115.EcoCheck2026.dto.secure.SignIn;
+import lk.ijse.cmjd114_115.EcoCheck2026.dto.secure.SignInDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,12 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
 
     @PostMapping("/signup")
-    public ResponseEntity<JWTResponse> signUp(@RequestBody UserDTO user){
+    public ResponseEntity<JWTResponseDTO> signUp(@RequestBody UserDTO user){
         return null;
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<JWTResponse> signIn(@RequestBody SignIn signInUser){
+    public ResponseEntity<JWTResponseDTO> signIn(@RequestBody SignInDTO signInDTOUser){
         return null;
     }
 }
