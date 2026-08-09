@@ -12,6 +12,7 @@ import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -35,6 +36,7 @@ public class UserController {
         return new  ResponseEntity<>(userService.getSelectedUser(userId), HttpStatus.OK);
     }
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<List<UserDTO>> getUsers() {
                 return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
     }
