@@ -31,7 +31,7 @@ public class JWTUtil {
     }
 
 //    Token Generation
-    private String generateToken(String email,
+    public String generateToken(String email,
       Collection<? extends GrantedAuthority> authorities){
 
         String role = authorities.stream()
